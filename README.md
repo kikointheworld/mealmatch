@@ -1,128 +1,99 @@
-# 🍽️ MealMatch
+# MealMatch
 
-MealMatch는 사용자의 취향, 상황, 식단 조건을 고려하여 최적의 메뉴를 추천해주는 AI 기반 음식 추천 모바일 애플리케이션입니다.
+MealMatch is a Flutter mobile app for discovering and saving restaurants.
+The current project focuses on map-based browsing, keyword search, bookmark lists, and basic user profile flows backed by Firebase.
 
-매일 반복되는 "오늘 뭐 먹지?"라는 고민을 줄이고, 사용자가 원하는 조건에 맞는 음식을 쉽고 빠르게 찾을 수 있도록 돕습니다.
+![MealMatch login screen](/Users/gimseonjae/Documents/GitHub/mealmatch/image/main.png)
 
----
+## Current status
 
-## ✨ 주요 기능
+This repository appears to be an in-progress prototype. The implemented experience is closer to a restaurant discovery app than an AI recommendation product.
 
-### 🤖 AI 기반 메뉴 추천
+## What is implemented
 
-* 자연어로 원하는 음식 조건 입력
-* 개인 취향을 반영한 맞춤형 메뉴 추천
-* 추천 결과에 대한 이유 제공
+- Email/Google-based sign-in flow with Firebase Authentication
+- Naver Map integration for browsing restaurant locations
+- Restaurant search by name
+- Dietary/tag-style filtering for nearby places
+- Restaurant detail pages with menu and review sections
+- Saved place lists with create, edit, and delete flows
+- Basic profile and preference screens
 
-### 🎯 상황별 음식 추천
+## Tech stack
 
-* 혼밥
-* 데이트
-* 회식
-* 야식
-* 다이어트 식단
-* 건강식
+- Flutter
+- Dart
+- Firebase Authentication
+- Firebase Realtime Database
+- Cloud Firestore
+- Provider
+- Naver Map SDK
+- Geolocator
 
-### 📝 조건 기반 검색
-
-* 매운 음식
-* 한식 / 중식 / 일식 / 양식
-* 가벼운 식사
-* 고단백 식단
-* 저칼로리 식단
-
-### ❤️ 선호도 기반 추천
-
-* 사용자의 선택 이력 분석
-* 자주 선택하는 메뉴 학습
-* 개인화된 추천 경험 제공
-
----
-
-## 🛠 기술 스택
-
-### Frontend
-
-* Flutter
-* Dart
-
-### Backend
-
-* REST API
-
-### AI
-
-* OpenAI API
-
-### Database
-
-* Firebase (예정)
-
----
-
-## 📱 사용 예시
-
-사용자 입력
+## Project structure
 
 ```text
-오늘 저녁으로 먹을 만한 메뉴 추천해줘.
-너무 무겁지 않고 매콤한 음식이면 좋겠어.
+lib/
+  main.dart                 App bootstrap
+  screen/                   Login and main navigation
+  nearby/                   Map view and nearby restaurant experience
+  search/                   Search UI
+  save/                     Saved lists and bookmarks
+  my/                       Profile and settings screens
+  services/data_manager.dart Shared app state and Firebase data access
+  models/                   Restaurant, menu, review, and bookmark models
 ```
 
-AI 응답
+## Running locally
 
-```text
-추천 메뉴: 쭈꾸미볶음
-
-추천 이유:
-- 적당한 매운맛
-- 저녁 식사로 부담이 적음
-- 단백질 섭취 가능
-```
-
----
-
-## 🚀 실행 방법
-
-### 1. 저장소 클론
-
-```bash
-git clone https://github.com/kikointheworld/mealmatch.git
-cd mealmatch
-```
-
-### 2. 패키지 설치
+### 1. Install dependencies
 
 ```bash
 flutter pub get
 ```
 
-### 3. 실행
+### 2. Configure platform credentials
+
+This app depends on external services and will not run correctly without valid local configuration.
+
+- Firebase config files are required for each target platform
+- A valid Naver Map client ID is required
+- Google Sign-In must be configured in Firebase for supported platforms
+
+Relevant files already present in this repo include:
+
+- `lib/firebase_options.dart`
+- `android/app/google-services.json`
+- `ios/Runner/GoogleService-Info.plist`
+- `macos/Runner/GoogleService-Info.plist`
+
+Before sharing or deploying the project, review whether those files should remain committed.
+
+### 3. Run the app
 
 ```bash
 flutter run
 ```
 
----
+## Data model notes
 
-## 🎯 프로젝트 목표
+The app currently reads restaurant data from Firebase Realtime Database and expects a `restaurants` collection-like node containing:
 
-MealMatch는 단순한 음식 검색 앱이 아닌,
+- bilingual names and addresses
+- category and opening-hours fields
+- latitude and longitude
+- images, menus, and reviews
+- classification flags used for filtering
 
-사용자의 상황과 취향을 이해하고
-음식 선택을 도와주는 AI 기반 개인 식사 어시스턴트를 목표로 합니다.
+User bookmark lists are also stored in Realtime Database under each authenticated user.
 
-향후에는 다음 기능을 추가할 예정입니다.
+## Gaps and follow-up ideas
 
-* 위치 기반 맛집 추천
-* 식단 관리 기능
-* 칼로리 분석
-* 음식 사진 기반 추천
-* 친구와 메뉴 투표 기능
-* 개인 맞춤 추천 모델 고도화
+- Document the expected Firebase database schema with sample payloads
+- Move secrets and service credentials out of the repository if this becomes public
+- Add smoke tests for login, data loading, and bookmark flows
+- Clarify whether the long-term product direction is discovery, recommendation, or both
 
----
+## License
 
-## 📄 License
-
-MIT License
+No license file is currently included in the repository. If you plan to open-source this project, add an explicit license.
