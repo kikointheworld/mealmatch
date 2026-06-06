@@ -1,66 +1,128 @@
-# 🍴 mealmatch
+# 🍽️ MealMatch
 
-## Getting Started
+MealMatch는 사용자의 취향, 상황, 식단 조건을 고려하여 최적의 메뉴를 추천해주는 AI 기반 음식 추천 모바일 애플리케이션입니다.
 
-This project is a starting point for a Flutter application.
+매일 반복되는 "오늘 뭐 먹지?"라는 고민을 줄이고, 사용자가 원하는 조건에 맞는 음식을 쉽고 빠르게 찾을 수 있도록 돕습니다.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ✨ 주요 기능
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🤖 AI 기반 메뉴 추천
 
+* 자연어로 원하는 음식 조건 입력
+* 개인 취향을 반영한 맞춤형 메뉴 추천
+* 추천 결과에 대한 이유 제공
 
-## 💡 Project Introduction
-교환학생을 위한 식당 및 메뉴 필터링 지도 애플리케이션
-**Meal Match**는 교환 학생들이 각자의 식문화와 선호도에 맞는 식당과 메뉴를 쉽게 찾을 수 있도록 돕는 애플리케이션입니다. 한국의 식당 데이터를 기반으로 특정 식단 성향(비건, 락토 베지테리언, 할랄 등) 필터링을 적용하여 사용자에게 맞춤형 추천을 제공합니다.
+### 🎯 상황별 음식 추천
 
+* 혼밥
+* 데이트
+* 회식
+* 야식
+* 다이어트 식단
+* 건강식
 
-## 🪄 Development Timeline
-2024.04.10 ~ 24.06.22
+### 📝 조건 기반 검색
 
+* 매운 음식
+* 한식 / 중식 / 일식 / 양식
+* 가벼운 식사
+* 고단백 식단
+* 저칼로리 식단
 
-## 🗝️ Development Environment
-**IDE**: Android Studio
+### ❤️ 선호도 기반 추천
 
-**Framework**: Flutter
+* 사용자의 선택 이력 분석
+* 자주 선택하는 메뉴 학습
+* 개인화된 추천 경험 제공
 
-**Programming Language**: Dart
+---
 
-**Backend/Database**: Firebase
+## 🛠 기술 스택
 
-**Data Collection**: Python Selenium for web scraping (Naver Map)
+### Frontend
 
-**Data Preprocessing and Manipulation**: Python pandas, numpy
+* Flutter
+* Dart
 
+### Backend
 
-## 🎯 Functions
-1. **사용자 인증 및 로그인**
-   - 회원가입 및 로그인시 ID/PW 유효성 검사
-   - Firebase Authentication을 이용하여 구글 소셜 로그인 기능 제공
-2. **식당 필터링**
-   - 사용자의 식단 제한 조건(비건, 할랄 등)을 적용하여 필터링된 식당 목록 제공
-   - 실시간 데이터베이스 업데이트로 최신 정보 제공
-3. **지도 기반 식당 표시**
-   - 네이버 지도 API 활용한 식당 위치 표시
-   - 필터링된 결과를 지도에 마커로 표시하여 사용자의 위치 기반 탐색 지원
-4. **식당 상세 정보**
-   - 식당 메뉴, 운영 시간, 리뷰 등 상세 정보 제공
-   - 사용자는 식당을 즐겨찾기에 추가하고 리뷰 작성 가능
-5. **검색 기능**
-   - 메뉴명, 식당명으로 검색 가능하여 빠른 탐색 지원
-6. **북마크(즐겨찾기) 관리**
-   - 사용자가 즐겨찾기한 식당 목록을 관리하고, 추가 및 삭제 가능
+* REST API
 
+### AI
 
-## 🧀 Implementation Challenges
-1. 데이터 수집 및 전처리
-   - 네이버 지도 웹페이지는 동적 웹페이지로, 구조가 복잡: 여러 개의 iframe이 겹쳐있는 구조
-   - 식당마다 제공하는 정보의 범위가 달라서, 크롤링 중 발생하는 오류를 잡기 위해 예외 처리
+* OpenAI API
 
-2. 실시간 데이터 동기화
-   - Firebase를 활용한 실시간 데이터 동기화 및 업데이트 과정에서 데이터의 일관성을 유지
-   -  Firebase Realtime Database의 구조를 체계적으로 설계하고, 데이터 변경 시 실시간으로 반영되도록 구현
+### Database
+
+* Firebase (예정)
+
+---
+
+## 📱 사용 예시
+
+사용자 입력
+
+```text
+오늘 저녁으로 먹을 만한 메뉴 추천해줘.
+너무 무겁지 않고 매콤한 음식이면 좋겠어.
+```
+
+AI 응답
+
+```text
+추천 메뉴: 쭈꾸미볶음
+
+추천 이유:
+- 적당한 매운맛
+- 저녁 식사로 부담이 적음
+- 단백질 섭취 가능
+```
+
+---
+
+## 🚀 실행 방법
+
+### 1. 저장소 클론
+
+```bash
+git clone https://github.com/kikointheworld/mealmatch.git
+cd mealmatch
+```
+
+### 2. 패키지 설치
+
+```bash
+flutter pub get
+```
+
+### 3. 실행
+
+```bash
+flutter run
+```
+
+---
+
+## 🎯 프로젝트 목표
+
+MealMatch는 단순한 음식 검색 앱이 아닌,
+
+사용자의 상황과 취향을 이해하고
+음식 선택을 도와주는 AI 기반 개인 식사 어시스턴트를 목표로 합니다.
+
+향후에는 다음 기능을 추가할 예정입니다.
+
+* 위치 기반 맛집 추천
+* 식단 관리 기능
+* 칼로리 분석
+* 음식 사진 기반 추천
+* 친구와 메뉴 투표 기능
+* 개인 맞춤 추천 모델 고도화
+
+---
+
+## 📄 License
+
+MIT License
